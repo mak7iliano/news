@@ -1,0 +1,203 @@
+$padding: 15px;
+
+$colorBase: #3373e9;
+$colorSuccess:#1baa67;
+
+$radius: 4px;
+
+body {
+    background: #ffffff;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+}
+
+body, form, div, p, a, img, h1, h2, h3, h4, h5, h6, table, table tr, table td {
+    border: none;
+    color: #000000;
+    font-family: Arial;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+input,
+textarea,
+button,
+select {
+    outline: none;
+    font-family: Arial;
+    font-size: 12px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: underline;
+    outline: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+h1, h2 {
+    font-size: 20px;
+    padding: 0 0 10px 0;
+    color: #545454;
+}
+
+.content {
+    max-width: 990px;
+    margin: 0 auto;
+    padding: $padding*2;
+
+    &--controls {
+        padding-top: $padding;
+        padding-bottom: $padding;
+    }
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 (-$padding);
+
+    &__cell {
+        width: 300px;
+        flex-grow: 1;
+        padding: 0 $padding;
+        display: flex; 
+    }
+}
+
+.block-news {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin: 0 0 $padding*2 0;
+    flex-grow: 1;
+    transition-duration: 0.3s;
+    border-radius: $radius;
+    overflow: hidden;
+
+    &:hover {
+        border-color: $colorBase;
+
+        &__caption {
+            color: $colorBase; 
+        }
+    }
+
+    &:hover &__caption {
+        color: $colorBase;
+    }
+
+    &:hover &__image {
+        transform: scale(1.1);
+    }
+
+    &__image {
+        height: 200px;
+        background-position: center;
+        background-size: cover;
+        margin: 0 0 $padding 0;
+        border-radius: $radius $radius 0 0;
+        transition-duration: 0.3s;
+    }
+        
+    &__caption {
+        padding: 0 $padding;
+        margin: 0 0 $padding 0;
+        font-size: 20px;
+    }
+
+    &__preview {
+        padding: 0 $padding;
+        margin: 0 0 $padding 0;
+    }
+
+    &__data {
+        padding: 0 $padding;
+        color: #666;
+        margin: 0 0 $padding 0;
+    }
+
+    &__tags {
+        position: absolute;
+        top: $padding;
+        right: $padding; 
+        text-align: right;
+        font-size: 0;
+    }
+
+    &__tag-item {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border-radius: 5px;
+        display: inline-block;
+        padding: 2px 5px;
+        margin: 0 0 5px 5px;
+        font-size: 12px;
+    }
+
+    &__remove {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: rgba(255, 255, 255, 0.4);
+        height: 30px;
+        width: 30px;
+        border-radius: 0 0 100% 0;
+        transition-duration: 0.3s;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        box-sizing: border-box;
+        padding: 8px 0 0 8px;
+        font-size: 10px;
+
+        &:hover {
+            background-color: rgb(207, 51, 51);
+            color: #fff;
+        }
+    }
+}
+
+.news-control {
+    background-color: rgba(0, 0, 0, 0.1);
+    text-align: right;
+}
+
+.btn {
+    height: 30px;
+    padding: 0 20px;
+    background-color: $colorBase;
+    border: none;
+    border-radius: $radius;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition-duration: 0.3s;
+
+    &:hover {
+        background-color: darken($color: $colorBase, $amount: 10%);
+    }
+
+    &--new {
+        float: left;
+        background-color: $colorSuccess;
+
+        &:hover {
+            background-color: rgb(19, 121, 73);
+            background-color: darken($color: $colorSuccess, $amount: 10%);
+        }
+    }
+}

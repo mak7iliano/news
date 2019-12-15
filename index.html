@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>News</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+    <div class="news-control">
+        <div class="content content--controls">
+            <button class="btn btn--new" onclick="addNews()">Add news</button>
+            <button class="btn" onclick="sort('asc')">New top</button>
+            <button class="btn" onclick="sort('desc')">New bottom</button>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <div class="grid" id="data"></div>
+    </div>
+
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
