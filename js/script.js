@@ -108,7 +108,6 @@ let newsElement = new NewsItem(data);
 // - метод для удаления новости;
 // - метод для сортировки новостей по дате (от последних новостей до старых);
 // - метод для поиска новостей по тегу (возвращает массив новостей, в которых указан переданный в метод тег).
-// Продемонстрировать работу написанных методов.
 
 class NewsList {
     constructor(_list) {
@@ -120,10 +119,36 @@ class NewsList {
     set addNews(data) {
         this.list = this.list.concat(data);
     }
+    set removeNews(index) {
+        this.list.splice(index, 1);
+    }
+    set searchByTag(str) {
+        let result = [];
+        for (let item of this.list) {
+            if (item.tags.length) {
+                for (let tag of item.tags) {
+                    if (str === tag) {
+                        result.push(item);
+
+                    }
+                }
+            }
+        }
+        newsElements.clearData();
+        if (result.length) {
+            let searchResults = new NewsList(result);
+            searchResults.print();
+        } else {
+            if (str === '') {
+                this.print();
+            }
+        }
+
+    }
     print() {
         for (let item of this.list) {
             let newsItem = new NewsItem(item);
-            newsItem.index = this.list.indexOf(item) - 1;
+            newsItem.index = this.list.indexOf(item);
             newsItem.print();
         }
     }
@@ -168,4 +193,17 @@ addNews = () => {
     newsElements.addNews = newsData;
     newsElements.clearData();
     newsElements.print();
+}
+
+removeNews = (index) => {
+    const allow = confirm('Are you sure to delete this news?');
+    if (allow) {
+        newsElements.removeNews = index;
+        newsElements.clearData();
+        newsElements.print();
+    }
+}
+
+searchByTag = (element) => {
+    newsElements.searchByTag = element.value;
 }

@@ -15,17 +15,17 @@
     <div class="news-control">
         <div class="content content--controls">
             <button class="btn btn--new" onclick="addNews()">Add news</button>
+            <input type="text" name="search" placeholder="Enter tag" onkeyup="searchByTag(this)">
             <button class="btn" onclick="sort('asc')">New top</button>
             <button class="btn" onclick="sort('desc')">New bottom</button>
         </div>
     </div>
 
     <div class="content">
-
         <div class="grid" id="data"></div>
     </div>
 
-    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script src="js/moment.js"></script>
     <script src="js/script.js"></script>
 </body>
 
