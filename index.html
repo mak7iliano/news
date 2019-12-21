@@ -7,22 +7,92 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>
-    <div class="news-control">
-        <div class="content content--controls">
-            <button class="btn btn--new" onclick="addNews()">Add news</button>
+    <nav class="menu">
+        <div class="content content--menu">
+            <ul class="menu__list">
+                <li><a class="menu__item menu__item--active js-menu-item" href="javascript:void(0)"
+                        onclick="togglePages('news', this)">News</a></li>
+                <li><a class="menu__item js-menu-item" href="javascript:void(0)"
+                        onclick="togglePages('aboutus', this)">About us</a>
+                </li>
+                <li><a class="menu__item js-menu-item" href="javascript:void(0)"
+                        onclick="togglePages('contacts', this)">Contacts</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="filter filter--hidden js-filter">
+        <div class="filter__item">
             <input type="text" name="search" placeholder="Enter tag" onkeyup="searchByTag(this)">
-            <button class="btn" onclick="sort('asc')">New top</button>
-            <button class="btn" onclick="sort('desc')">New bottom</button>
         </div>
     </div>
 
-    <div class="content">
-        <div class="grid" id="data"></div>
+    <div class="js-content-news">
+        <div class="news-control">
+            <div class="content content--controls">
+                <button class="btn btn--new" onclick="addNews()">Add news</button>
+                <button class="btn" onclick="sort('asc')">New top</button>
+                <button class="btn" onclick="sort('desc')">New bottom</button>
+                <button class="btn" onclick="filterToggle()">
+                    <i class="fas fa-filter"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="grid" id="data"></div>
+        </div>
+    </div>
+
+    <div class="js-content-aboutus" style="display: none;">
+        <div class="content">
+            <h2>About us</h2>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam voluptas necessitatibus quidem, libero
+            veritatis officia dolor expedita explicabo non laudantium repellendus tenetur, ullam maiores iure velit
+            accusamus deserunt odio alias! Error laborum voluptates perferendis voluptatibus fugit quam quisquam totam
+            atque
+            minus. Architecto assumenda temporibus beatae sunt voluptatibus alias quaerat, placeat voluptatum vero.
+            Harum
+            fugiat consectetur ut illo, aspernatur facilis. Aut reprehenderit incidunt porro eum aspernatur ullam
+            accusantium minima? Culpa ratione saepe commodi. At officia dicta facere amet voluptas expedita libero natus
+            dolor sit nemo optio voluptatum nisi necessitatibus nam ratione ipsam non sint molestiae voluptate, eveniet
+            odio
+            enim commodi. Repudiandae.
+        </div>
+    </div>
+
+    <div class="js-content-contacts" style="display: none;">
+        <div class="content">
+            <h2>Contacts</h2>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor, repudiandae. Amet optio distinctio iusto
+            reiciendis beatae exercitationem nostrum sint, non consequuntur aperiam ducimus, pariatur aliquid laudantium
+            vel
+            tempora! Tenetur nemo obcaecati earum? Repellat pariatur animi, nobis omnis blanditiis temporibus et quae
+            numquam obcaecati beatae odit sint molestiae? Tempora hic itaque voluptatum autem qui voluptate dolores
+            molestiae iusto iste eveniet fuga distinctio officiis, eum repellendus similique, tenetur quia non odio ipsa
+            quas blanditiis. Optio, quaerat esse nostrum quos et rem beatae dolorem? Odit sunt voluptate dolor nobis
+            corporis pariatur sapiente debitis in excepturi architecto atque rerum consequuntur amet, esse culpa
+            provident!
+            Consequuntur delectus dolor quasi possimus totam, fugit non minima omnis cumque blanditiis, necessitatibus,
+            iste
+            quam placeat? Tempora ipsam ex, quisquam maxime quos enim asperiores temporibus reiciendis, dolores eius
+            quaerat
+            delectus voluptates saepe, accusantium tempore tenetur? Expedita quas labore reiciendis voluptatem
+            consequuntur
+            et minima eum, illum sunt nulla error corporis optio, numquam fuga aut eos dolorem inventore? Eligendi fugit
+            magni tenetur ab tempore pariatur, deserunt sit nostrum dignissimos minima aspernatur totam molestias
+            exercitationem similique a nisi, consequuntur ducimus magnam, asperiores quasi libero. Culpa, sapiente?
+            Animi
+            vel vero minus quae blanditiis, quis aliquam id natus reiciendis eos, nulla inventore eaque excepturi sit.
+        </div>
     </div>
 
     <script src="js/moment.js"></script>

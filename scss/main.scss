@@ -45,6 +45,8 @@ input[type="text"] {
     border: 1px solid rgba(0, 0, 0, 0.2);
     height: 30px;
     padding: 0 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 a {
@@ -70,6 +72,11 @@ h1, h2 {
     &--controls {
         padding-top: $padding;
         padding-bottom: $padding;
+    }
+
+    &--menu {
+        padding-top: 0;
+        padding-bottom: 0;
     }
 }
 
@@ -206,6 +213,52 @@ h1, h2 {
         &:hover {
             background-color: rgb(19, 121, 73);
             background-color: darken($color: $colorSuccess, $amount: 10%);
+        }
+    }
+}
+
+.filter {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: $padding;
+    box-sizing: border-box;
+    overflow: auto;
+    transition-duration: 0.3s;
+
+    &__item {
+        margin: 0 0 $padding 0;  
+    }
+
+    &--hidden {
+        transform: translateX(-250px);
+    }
+}
+
+.menu {
+    background-color: $colorBase;
+
+    &__list {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+    }
+
+    &__item {
+        padding: $padding;
+        color: #fff;
+        text-transform: uppercase;
+        display: block;
+        text-decoration: none;
+
+        &:hover,
+        &--active {
+            background-color: rgba(0, 0, 0, 0.2);
         }
     }
 }

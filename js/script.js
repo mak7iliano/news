@@ -207,3 +207,21 @@ removeNews = (index) => {
 searchByTag = (element) => {
     newsElements.searchByTag = element.value;
 }
+
+filterToggle = () => {
+    const blockFilter = document.querySelector('.js-filter');
+    blockFilter.classList.toggle('filter--hidden');
+}
+
+togglePages = (page, link) => {
+    const list = document.querySelectorAll('.js-menu-item');
+    for (let item of list) {
+        item.classList.remove('menu__item--active');
+    }
+    link.classList.add('menu__item--active');
+
+    document.querySelector('.js-content-news').style.display = 'none';
+    document.querySelector('.js-content-aboutus').style.display = 'none';
+    document.querySelector('.js-content-contacts').style.display = 'none';
+    document.querySelector('.js-content-' + page).style.display = 'block';
+}
