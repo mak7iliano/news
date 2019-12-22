@@ -78,6 +78,7 @@ class NewsItem {
             date = moment(this.date).format('LL');
         }
 
+        result += `<div class="block-news__like js-news-like" onclick="addLike(this)"><i class="far fa-heart"></i> <span>0</span></div>`; //likes
         result += `<div class="block-news__data">${date}</div>`;
 
         if (this.tags.length) {
@@ -177,10 +178,14 @@ sort = (dirrection) => {
 }
 
 addNews = () => {
-    const newsTitle = prompt('Enter news title');
-    const newsPreview = prompt('Enter news preview');
-    const newsImage = prompt('Insert image URL');
-    const newsTags = prompt('Enter tags through comma');
+    document.querySelector('.js-modal-add-news').style.display = 'block';
+}
+
+sendData = (form) => {
+    const newsTitle = form.querySelector("[name = 'title']").value;
+    const newsPreview = form.querySelector("[name = 'preview']").value;
+    const newsImage = form.querySelector("[name = 'image']").value;
+    const newsTags = form.querySelector("[name = 'tags']").value;
 
     const newsData = {
         title: newsTitle,
@@ -213,6 +218,21 @@ filterToggle = () => {
     blockFilter.classList.toggle('filter--hidden');
 }
 
+document.body.addEventListener('click', (event) => {
+    const blockFilter = document.querySelector('.js-filter');
+    let target = event.target;
+    let buttonElement = target.closest('.js-filter-toggle');
+
+    if (!target.classList.contains('js-filter-toggle') && !buttonElement) {
+
+        if (!blockFilter.classList.contains('filter--hidden')) {
+            if (!target.classList.contains('js-filter')) {
+                blockFilter.classList.add('filter--hidden');
+            }
+        }
+    }
+});
+
 togglePages = (page, link) => {
     const list = document.querySelectorAll('.js-menu-item');
     for (let item of list) {
@@ -224,4 +244,31 @@ togglePages = (page, link) => {
     document.querySelector('.js-content-aboutus').style.display = 'none';
     document.querySelector('.js-content-contacts').style.display = 'none';
     document.querySelector('.js-content-' + page).style.display = 'block';
+}
+
+document.body.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+})
+
+document.body.addEventListener('keydown', (e) => {
+    e = e || window.event;
+    let key = e.which || e.keyCode; // keyCode detection
+    let ctrl = e.ctrlKey ? e.ctrlKey : ((key === 17) ? true : false); // ctrl detection
+
+    if (key == 70 && ctrl) {
+        const filterInput = document.querySelector('.js-filter').querySelector('input');
+        filterToggle();
+        filterInput.focus();
+        e.preventDefault();
+    }
+});
+
+addLike = (element) => {
+    console.log(element.childNodes);
+    let block = element.childNodes[element.childNodes.length - 1];
+    let count = +block.innerHTML;
+    block.innerHTML = ++count;
+    element.classList.add('block-news__like--active');
+    element.childNodes[0].classList.remove('far');
+    element.childNodes[0].classList.add('fas');
 }

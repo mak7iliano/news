@@ -49,6 +49,16 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
+textarea {
+    border-radius: $radius;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 5px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 100px;
+    resize: vertical;
+}
+
 a {
     text-decoration: underline;
     outline: none;
@@ -184,6 +194,22 @@ h1, h2 {
             color: #fff;
         }
     }
+
+    &__like {
+        float: right;
+        padding: 0 $padding;
+        color: #ccc;
+        transition-duration: 0.3s;
+        cursor: pointer;
+
+        &:hover {
+            color: #000;
+        }
+
+        &--active {
+            color: rgb(207, 51, 51);
+        }
+    }
 }
 
 .news-control {
@@ -260,5 +286,24 @@ h1, h2 {
         &--active {
             background-color: rgba(0, 0, 0, 0.2);
         }
+    }
+}
+
+.modal-add-news {
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    z-index: 20;
+    background-color: #fff;
+    width: 300px;
+    transform: translateX(-50%);
+    padding: $padding*2;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); 
+    border-radius: $radius; 
+    display: none;
+    
+    &__element {
+        margin: 0 0 $padding 0;
     }
 }

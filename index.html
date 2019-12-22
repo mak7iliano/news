@@ -31,8 +31,28 @@
 
     <div class="filter filter--hidden js-filter">
         <div class="filter__item">
-            <input type="text" name="search" placeholder="Enter tag" onkeyup="searchByTag(this)">
+            <input type="text" name="search" placeholder="Enter tag" onkeyup="searchByTag(this)" autocomplete="off">
         </div>
+    </div>
+
+    <div class="modal-add-news js-modal-add-news">
+        <form onsubmit="sendData(this); return false;">
+            <div class="modal-add-news__element">
+                <input type="text" name="title" placeholder="Enter name">
+            </div>
+            <div class="modal-add-news__element">
+                <textarea name="preview" placeholder="Enter description"></textarea>
+            </div>
+            <div class="modal-add-news__element">
+                <input type="text" name="image" placeholder="Enter URL">
+            </div>
+            <div class="modal-add-news__element">
+                <input type="text" name="tags" placeholder="Enter tags through coma">
+            </div>
+            <div class="modal-add-news__button">
+                <button class="btn">Create</button>
+            </div>
+        </form>
     </div>
 
     <div class="js-content-news">
@@ -41,7 +61,7 @@
                 <button class="btn btn--new" onclick="addNews()">Add news</button>
                 <button class="btn" onclick="sort('asc')">New top</button>
                 <button class="btn" onclick="sort('desc')">New bottom</button>
-                <button class="btn" onclick="filterToggle()">
+                <button class="btn js-filter-toggle" onclick="filterToggle()">
                     <i class="fas fa-filter"></i>
                 </button>
             </div>
